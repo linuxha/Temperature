@@ -1,0 +1,6 @@
+# Stuff for
+# mosquitto_sub -h mozart.uucp -t "weather/metar/json" -C 1 >/tmp/metar.json & ~/bin/get-json.js /tmp/metar.json 'response.data[0].METAR[0].temp_c[0]'my graphs
+# 
+2 0 * * *	/home/njc/dev/Temperature/mmove.sh
+3 * * * *	/usr/local/bin/mosquitto_sub -h mozart.uucp -t "weather/metar/json" -C 1 >/tmp/metar.json && /home/njc/bin/gettopicval.sh && /home/njc/bin/topicgraph.sh
+4 1 * * *	/home/njc/bin/clean-topicval.sh
